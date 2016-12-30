@@ -20,6 +20,7 @@ set smartindent
 set autoindent
 set hlsearch " highlight words when searching
 set showmatch " shows matching parentheses
+set laststatus=2 " display status line always
 
 " Lettings
 let mapleader=" "
