@@ -85,6 +85,7 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 map <leader>g :Ack<Space>
 map <leader>f :MRU<CR>
+map <leader>o :BufExplorer<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
