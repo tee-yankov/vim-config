@@ -48,16 +48,26 @@ set foldmethod=syntax
 
 " Lettings
 let mapleader=" "
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-let g:lightline = {
+let g:lightline={
       \ 'colorscheme': 'wombat',
       \ }
-let g:ctrlp_map = '<c-f>'
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+let g:ctrlp_map='<c-f>'
+let g:ctrlp_custom_ignore='node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 let g:multi_cursor_next_key="\<C-s>"
-let g:jsx_ext_required = 0
+let g:jsx_ext_required=0
+let g:syntastic_javascript_checkers=['standard']
+let g:syntastic_always_populate_loc_list=1
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'html' : {
+\    'quote_char': "'",
+\  },
+\}
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
