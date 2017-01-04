@@ -44,6 +44,7 @@ try
   set stal=2
 catch
 endtry
+set foldmethod=syntax
 
 " Lettings
 let mapleader=" "
@@ -56,6 +57,7 @@ let g:lightline = {
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 let g:multi_cursor_next_key="\<C-s>"
+let g:jsx_ext_required = 0
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
