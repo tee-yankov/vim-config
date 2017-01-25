@@ -3,6 +3,7 @@ execute pathogen#infect()
 
 " Otherings
 filetype on
+filetype plugin on
 filetype indent on
 syntax on
 colorscheme dracula
@@ -45,6 +46,7 @@ try
 catch
 endtry
 set foldmethod=syntax
+set whichwrap+=<,>,h,l,[,]
 
 " Lettings
 let mapleader=" "
@@ -61,8 +63,9 @@ let g:jsx_ext_required=0
 let g:syntastic_javascript_checkers=['standard']
 let g:syntastic_always_populate_loc_list=1
 let g:user_emmet_settings = {
-\  'javascript' : {
+\  'javascript.jsx' : {
 \      'extends' : 'jsx',
+\      'quote_char': "'"
 \  },
 \  'html' : {
 \    'quote_char': "'",
@@ -90,10 +93,16 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+noremap <Leader>y "+y
+noremap <Leader>p "+p
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <F1> <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
+
 
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
