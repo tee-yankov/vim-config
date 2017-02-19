@@ -55,3 +55,6 @@
 [submodule "bundle/vim-sensible"]
 	path = bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
+[submodule "bundle/vim-markdown-preview.git"]
+	path = bundle/vim-markdown-preview.git
+	url = https://github.com/JamshedVesuna/vim-markdown-preview.git
