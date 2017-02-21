@@ -58,3 +58,9 @@
 [submodule "bundle/rust.vim"]
 	path = bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "bundle/vim-instant-markdown.git"]
+	path = bundle/vim-instant-markdown.git
+	url = https://github.com/suan/vim-instant-markdown.git
