@@ -102,6 +102,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <F1> <nop>
 nnoremap Q <nop>
 nnoremap K <nop>
+nnoremap <nowait> 0 ^
 
 
 " Cool shit
