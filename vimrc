@@ -6,7 +6,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
-colorscheme dracula
+colorscheme flatcolor
 
 " Settings
 set wildmenu
@@ -17,8 +17,6 @@ set nowrap
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set smartindent
-set autoindent
 set hlsearch " highlight words when searching
 set showmatch " shows matching parentheses
 set laststatus=2 " always display status lines
@@ -37,8 +35,6 @@ set magic " for more magic
 set encoding=utf8
 set nobackup
 set nowb
-set ai " audo indent
-set si " smart indent
 set wrap " wrap lines
 try
   set switchbuf=useopen,usetab,newtab
@@ -47,6 +43,8 @@ catch
 endtry
 set foldmethod=syntax
 set whichwrap+=<,>,h,l,[,]
+set smartindent
+set autoindent
 
 " Lettings
 let mapleader=" "
@@ -112,13 +110,13 @@ nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap <nowait> 0 ^
 inoremap <silent><expr> <TAB>
-		\ pumvisible() ? "\<C-n>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ deoplete#mappings#manual_complete()
-		function! s:check_back_space() abort "{{{
-		let col = col('.') - 1
-		return !col || getline('.')[col - 1]  =~ '\s'
-		endfunction"}}}
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
@@ -138,3 +136,9 @@ try
 catch
 endtry
 
+if has('patch-7.4.1778')
+  set guicolors
+endif
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
