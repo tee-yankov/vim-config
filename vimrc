@@ -78,6 +78,7 @@ let g:neomake_open_list = 2
 let g:neomake_verbose = 3
 let g:neomake_javascript_eslint_exe = '/home/ted/n/lib/node_modules/eslint_d/bin/eslint_d'
 let g:neomake_javascript_enabled_makers = ['eslint', 'standard']
+let g:deoplete#enable_at_startup = 1
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
@@ -110,7 +111,14 @@ nnoremap <F1> <nop>
 nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap <nowait> 0 ^
-
+inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ deoplete#mappings#manual_complete()
+		function! s:check_back_space() abort "{{{
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~ '\s'
+		endfunction"}}}
 
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
