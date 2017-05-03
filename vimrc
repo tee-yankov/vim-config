@@ -71,6 +71,13 @@ let g:user_emmet_settings = {
 \    'quote_char': "'",
 \  },
 \}
+let g:ycm_rust_src_path = '/usr/src/rust'
+let g:airline_powerline_fonts = 1
+let g:neomake_list_height = 2
+let g:neomake_open_list = 2
+let g:neomake_verbose = 3
+let g:neomake_javascript_eslint_exe = '/home/ted/n/lib/node_modules/eslint_d/bin/eslint_d'
+let g:neomake_javascript_enabled_makers = ['eslint', 'standard']
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
@@ -107,6 +114,7 @@ nnoremap <nowait> 0 ^
 
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
+autocmd! BufWritePost *.js silent! Neomake
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
