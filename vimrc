@@ -1,5 +1,28 @@
-" Pathogen infect
-execute pathogen#infect()
+" Plugins
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'terryma/vim-expand-region'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mileszs/ack.vim'
+Plug 'yegappan/mru'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-commentary'
+Plug 'mattn/emmet-vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'Shougo/deoplete.nvim'
+Plug 'carlitux/deoplete-ternjs'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+
+call plug#end()
 
 " Otherings
 filetype on
@@ -51,15 +74,10 @@ let mapleader=" "
 let g:NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-let g:lightline={
-      \ 'colorscheme': 'wombat',
-      \ }
 let g:ctrlp_map='<c-f>'
 let g:ctrlp_custom_ignore='node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 let g:multi_cursor_next_key="\<C-s>"
 let g:jsx_ext_required=0
-let g:syntastic_javascript_checkers=['standard']
-let g:syntastic_always_populate_loc_list=1
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \      'extends' : 'jsx',
