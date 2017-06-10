@@ -1,12 +1,45 @@
-" Pathogen infect
-execute pathogen#infect()
+" Plugins
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'terryma/vim-expand-region'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mileszs/ack.vim'
+Plug 'yegappan/mru'
+Plug 'tpope/vim-commentary'
+Plug 'mattn/emmet-vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs'
+Plug 'neomake/neomake'
+Plug 'mhartington/oceanic-next'
+Plug 'ervandew/supertab'
+Plug 'sheerun/vim-polyglot'
+Plug 'moll/vim-node', { 'for': ['javascript'] }
+Plug 'edkolev/tmuxline.vim'
+
+let g:tigris#enabled = 1
+" let g:polyglot_disabled = ['javascript']
+
+call plug#end()
+
+" Colors
+if (has("termguicolors"))
+ set termguicolors
+endif
 
 " Otherings
 filetype on
 filetype plugin on
 filetype indent on
-syntax on
-colorscheme dracula
+syntax enable
+colorscheme OceanicNext
 
 " Settings
 set wildmenu
@@ -17,8 +50,6 @@ set nowrap
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set smartindent
-set autoindent
 set hlsearch " highlight words when searching
 set showmatch " shows matching parentheses
 set laststatus=2 " always display status lines
@@ -37,8 +68,6 @@ set magic " for more magic
 set encoding=utf8
 set nobackup
 set nowb
-set ai " audo indent
-set si " smart indent
 set wrap " wrap lines
 try
   set switchbuf=useopen,usetab,newtab
@@ -47,21 +76,18 @@ catch
 endtry
 set foldmethod=syntax
 set whichwrap+=<,>,h,l,[,]
+set smartindent
+set autoindent
 
 " Lettings
 let mapleader=" "
 let g:NERDTreeWinPos="right"
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-let g:lightline={
-      \ 'colorscheme': 'wombat',
-      \ }
 let g:ctrlp_map='<c-f>'
 let g:ctrlp_custom_ignore='node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 let g:multi_cursor_next_key="\<C-s>"
 let g:jsx_ext_required=0
-let g:syntastic_javascript_checkers=['standard']
-let g:syntastic_always_populate_loc_list=1
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \      'extends' : 'jsx',
@@ -71,6 +97,17 @@ let g:user_emmet_settings = {
 \    'quote_char': "'",
 \  },
 \}
+let g:ycm_rust_src_path = '/usr/src/rust'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='oceanicnext'
+let g:neomake_verbose = 1
+let g:neomake_javascript_eslint_exe = '/home/ted/n/lib/node_modules/eslint_d/bin/eslint_d'
+let g:neomake_javascript_enabled_makers = ['eslint', 'standard']
+let g:neomake_rust_enabled_makers = ['rustc']
+let g:deoplete#enable_at_startup = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:used_javascript_libs = 'react'
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
@@ -104,9 +141,10 @@ nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap <nowait> 0 ^
 
-
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
+autocmd! BufWritePost *.js silent! Neomake
+autocmd! BufWritePost *.rs Neomake
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -116,9 +154,12 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-try
-  set undodir=~/.vim/temp_dirs/undodir
-  set undofile
-catch
-endtry
+set undodir=~/.vim/temp_dirs/undodir
+set undofile
 
+if has('patch-7.4.1778')
+  set guicolors
+endif
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
