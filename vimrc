@@ -10,26 +10,36 @@ Plug 'terryma/vim-expand-region'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mileszs/ack.vim'
 Plug 'yegappan/mru'
-Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
+Plug 'neomake/neomake'
+Plug 'mhartington/oceanic-next'
+Plug 'ervandew/supertab'
+Plug 'sheerun/vim-polyglot'
+Plug 'moll/vim-node', { 'for': ['javascript'] }
+Plug 'edkolev/tmuxline.vim'
+
+let g:tigris#enabled = 1
+" let g:polyglot_disabled = ['javascript']
 
 call plug#end()
+
+" Colors
+if (has("termguicolors"))
+ set termguicolors
+endif
 
 " Otherings
 filetype on
 filetype plugin on
 filetype indent on
-syntax on
-colorscheme flatcolor
+syntax enable
+colorscheme OceanicNext
 
 " Settings
 set wildmenu
@@ -89,12 +99,15 @@ let g:user_emmet_settings = {
 \}
 let g:ycm_rust_src_path = '/usr/src/rust'
 let g:airline_powerline_fonts = 1
-let g:neomake_list_height = 2
-let g:neomake_open_list = 2
-let g:neomake_verbose = 3
+let g:airline_theme='oceanicnext'
+let g:neomake_verbose = 1
 let g:neomake_javascript_eslint_exe = '/home/ted/n/lib/node_modules/eslint_d/bin/eslint_d'
 let g:neomake_javascript_enabled_makers = ['eslint', 'standard']
+let g:neomake_rust_enabled_makers = ['rustc']
 let g:deoplete#enable_at_startup = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:used_javascript_libs = 'react'
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
@@ -127,18 +140,11 @@ nnoremap <F1> <nop>
 nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap <nowait> 0 ^
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
 
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
 autocmd! BufWritePost *.js silent! Neomake
+autocmd! BufWritePost *.rs Neomake
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -148,11 +154,8 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-try
-  set undodir=~/.vim/temp_dirs/undodir
-  set undofile
-catch
-endtry
+set undodir=~/.vim/temp_dirs/undodir
+set undofile
 
 if has('patch-7.4.1778')
   set guicolors
