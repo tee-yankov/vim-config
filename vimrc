@@ -24,9 +24,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node', { 'for': ['javascript'] }
 Plug 'edkolev/tmuxline.vim'
 
-let g:tigris#enabled = 1
-" let g:polyglot_disabled = ['javascript']
-
 call plug#end()
 
 " Colors
@@ -108,6 +105,8 @@ let g:deoplete#enable_at_startup = 1
 let g:SuperTabClosePreviewOnPopupClose = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:used_javascript_libs = 'react'
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
