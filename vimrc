@@ -16,7 +16,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm i -g tern' }
 Plug 'neomake/neomake'
 Plug 'mhartington/oceanic-next'
 Plug 'ervandew/supertab'
