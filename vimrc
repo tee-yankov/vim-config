@@ -23,6 +23,8 @@ Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node', { 'for': ['javascript'] }
 Plug 'edkolev/tmuxline.vim'
+Plug 'sebastianmarkow/deoplete-rust'
+Plug 'tpope/vim-repeat'
 
 call plug#end()
 
@@ -107,6 +109,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:used_javascript_libs = 'react'
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
+let g:deoplete#sources#rust#racer_binary='/home/ted/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
