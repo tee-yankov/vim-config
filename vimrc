@@ -23,6 +23,7 @@ Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node', { 'for': ['javascript'] }
 Plug 'edkolev/tmuxline.vim'
+Plug 'ternjs/tern_for_vim'
 
 call plug#end()
 
@@ -102,8 +103,9 @@ let g:neomake_javascript_eslint_exe = '/home/ted/n/lib/node_modules/eslint_d/bin
 let g:neomake_javascript_enabled_makers = ['eslint', 'standard']
 let g:neomake_rust_enabled_makers = ['rustc']
 let g:deoplete#enable_at_startup = 1
+let g:tern#filetypes = ['javascript.jsx', 'jsx', 'javascript']
 let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = '<c-n>'
 let g:used_javascript_libs = 'react'
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
