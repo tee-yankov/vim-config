@@ -48,6 +48,7 @@ set hidden
 set history=500
 set nowrap
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set hlsearch " highlight words when searching
