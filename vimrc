@@ -15,17 +15,17 @@ Plug 'mattn/emmet-vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm i -g tern' }
-Plug 'neomake/neomake'
 Plug 'mhartington/oceanic-next'
 Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
-Plug 'moll/vim-node', { 'for': ['javascript'] }
+Plug 'mxw/vim-jsx'
 Plug 'edkolev/tmuxline.vim'
-Plug 'ternjs/tern_for_vim'
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'tpope/vim-repeat'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm i' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm i -g tern' }
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -100,10 +100,6 @@ let g:user_emmet_settings = {
 let g:ycm_rust_src_path = '/usr/src/rust'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='oceanicnext'
-let g:neomake_verbose = 1
-let g:neomake_javascript_eslint_exe = '/home/ted/n/lib/node_modules/eslint_d/bin/eslint_d'
-let g:neomake_javascript_enabled_makers = ['eslint', 'standard']
-let g:neomake_rust_enabled_makers = ['rustc']
 let g:deoplete#enable_at_startup = 1
 let g:tern#filetypes = ['javascript.jsx', 'jsx', 'javascript']
 let g:SuperTabClosePreviewOnPopupClose = 1
@@ -148,8 +144,6 @@ nnoremap <nowait> 0 ^
 
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
-autocmd! BufWritePost *.js silent! Neomake
-autocmd! BufWritePost *.rs Neomake
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
