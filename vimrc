@@ -44,6 +44,7 @@ colorscheme OceanicNext
 " Settings
 set wildmenu
 set number
+set relativenumber
 set hidden
 set history=500
 set nowrap
