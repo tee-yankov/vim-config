@@ -111,6 +111,9 @@ let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 let g:deoplete#sources#rust#racer_binary='/home/ted/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
