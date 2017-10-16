@@ -4,7 +4,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'jiangmiao/auto-pairs'
@@ -16,9 +15,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'mhartington/oceanic-next'
-Plug 'ervandew/supertab'
 Plug 'sheerun/vim-polyglot'
-Plug 'mxw/vim-jsx'
 Plug 'edkolev/tmuxline.vim'
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'tpope/vim-repeat'
@@ -114,6 +111,11 @@ let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \}
+let g:ale_fixers = {
+\   'javascript': [
+\       'standard'
+\   ],
+\}
 
 " Mappings
 map <leader>s :source ~/.vimrc<CR>
@@ -146,6 +148,9 @@ nnoremap <F1> <nop>
 nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap <nowait> 0 ^
+
+" tab completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Cool shit
 autocmd BufWritePre * :%s/\s\+$//e " remove whitespace on save
