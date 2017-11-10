@@ -134,6 +134,7 @@ map <leader>t<leader> :tabnext
 map <leader>g :Ack<Space>
 map <leader>f :MRU<CR>
 map <leader>o :BufExplorer<CR>
+map <leader>d :TernDef<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -166,9 +167,6 @@ endif
 set undodir=~/.vim/temp_dirs/undodir
 set undofile
 
-if has('patch-7.4.1778')
-  set guicolors
-endif
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
